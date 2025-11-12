@@ -1,8 +1,5 @@
-// Flatpickr + стилі
 import flatpickr from 'flatpickr';
 import 'flatpickr/dist/flatpickr.min.css';
-
-// iziToast + стилі
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
 
@@ -20,7 +17,6 @@ refs.startBtn.disabled = true;
 let userSelectedDate = null;
 let timerId = null;
 
-// Ініціалізація flatpickr
 flatpickr(refs.input, {
   enableTime: true,
   time_24hr: true,
@@ -51,13 +47,12 @@ refs.startBtn.addEventListener('click', onStart);
 function onStart() {
   if (!userSelectedDate) return;
 
-  // Без подвійних таймерів
   if (timerId) clearInterval(timerId);
 
   refs.startBtn.disabled = true;
   refs.input.disabled = true;
 
-  tick(); // миттєве оновлення
+  tick();
   timerId = setInterval(tick, 1000);
 }
 
@@ -69,8 +64,7 @@ function tick() {
     clearInterval(timerId);
     timerId = null;
     render({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-    refs.input.disabled = false;   // можна обрати наступну дату
-    // Кнопка залишається неактивною, доки не виберуть валідну дату наново
+    refs.input.disabled = false;
     iziToast.success({ title: 'Done', message: 'Countdown finished!', position: 'topRight' });
     return;
   }
@@ -90,12 +84,10 @@ function disableStart() {
   userSelectedDate = null;
 }
 
-// Форматування 2+ символів
 function addLeadingZero(value) {
   return String(value).padStart(2, '0');
 }
 
-// Дано в умові
 function convertMs(ms) {
   const second = 1000;
   const minute = second * 60;

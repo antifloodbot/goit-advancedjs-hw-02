@@ -10,14 +10,13 @@ function onSubmit(e) {
 
   const formData = new FormData(form);
   const delay = Number(formData.get('delay'));
-  const state = formData.get('state'); // 'fulfilled' | 'rejected'
+  const state = formData.get('state');
 
   if (!Number.isFinite(delay) || delay < 0 || !state) {
     iziToast.error({ message: 'Provide a non-negative delay and choose a state', position: 'topRight' });
     return;
   }
 
-  // Створюємо проміс з обраною поведінкою
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       state === 'fulfilled' ? resolve(delay) : reject(delay);
@@ -39,7 +38,4 @@ function onSubmit(e) {
         timeout: 3000,
       });
     });
-
-  // за бажанням можна очистити форму:
-  // form.reset();
 }
