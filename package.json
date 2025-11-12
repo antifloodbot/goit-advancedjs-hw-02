@@ -1,5 +1,5 @@
 {
-  "name": "vanilla-app-template",
+  "name": "GoIT Advanced JS HW-02",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -7,9 +7,10 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -b gh-pages"
   },
   "devDependencies": {
+    "gh-pages": "^6.3.0",
     "glob": "^11.0.0",
     "postcss": "^8.4.41",
     "postcss-sort-media-queries": "^5.2.0",
